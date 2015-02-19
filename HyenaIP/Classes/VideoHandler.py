@@ -14,6 +14,7 @@ class VideoHandler(object):
         capture frame and reverse RBG BGR and return opencv image                                      
         """
         ret, readFrame=self.capture.read()
+
         if(ret==True):
             self.currentFrame = cv2.cvtColor(readFrame, cv2.COLOR_BGR2RGB)
  

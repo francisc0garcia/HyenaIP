@@ -3,7 +3,8 @@ from PyQt4 import QtGui, QtCore, Qt
 from Forms.ImageAcquisitionModule.UIimageacquisition import *
 from Forms.ImageAcquisitionModule.UIimageacquisition_EventHandler import *
 
-ParentUI = 0
+HomeFrame = 0
+GlobalConfig = GlobalSettings()
 
 class GUI_UIimageacquisition(QtGui.QMainWindow):
     def __init__(self, parent=None):
@@ -12,22 +13,22 @@ class GUI_UIimageacquisition(QtGui.QMainWindow):
         self.GUI_UIimageacquisition.setupUi(self)
         self.update()
 
-        UIimageacquisition_LoadEvents(self)
+        UIimageacquisition_LoadEvents(self, GlobalConfig)
 
 
-def LoadEvents(parent):
+def Ui_HomeScreen_LoadEvents(parent):
     '''
     Connect events to controls and define behaviour in UI elements
     '''
-    global ParentUI
-    ParentUI = parent
+    global HomeFrame
+    HomeFrame = parent
 
     '''
     Defiine event
     '''
     def on_BtnImageDAQ_clicked():
-        ParentUI.w = GUI_UIimageacquisition()
-        ParentUI.w.show()
+        HomeFrame.w = GUI_UIimageacquisition()
+        HomeFrame.w.show()
 
     def on_BtnCreateLoad_clicked():
         ShowFileDialog()
@@ -35,14 +36,18 @@ def LoadEvents(parent):
     '''
     Connect controls to events
     '''
-    ParentUI.ui.BtnCreateLoad.clicked.connect(on_BtnCreateLoad_clicked)
-    ParentUI.ui.BtnImageDAQ.clicked.connect(on_BtnImageDAQ_clicked)
-    ParentUI.ui.actionExit.triggered.connect(CloseWindow)
+    HomeFrame.ui.BtnCreateLoad.clicked.connect(on_BtnCreateLoad_clicked)
+    HomeFrame.ui.BtnImageDAQ.clicked.connect(on_BtnImageDAQ_clicked)
+    HomeFrame.ui.actionExit.triggered.connect(CloseWindow)
 
 def CloseWindow():
     sys.exit(0)
     
 def ShowFileDialog():
-    fname = QtGui.QFileDialog.getExistingDirectory(ParentUI, 'Open File', '/home')
-    ParentUI.ui.TextEditDirectoryPath.appendPlainText(fname)
+    PathDirectory = QtGui.QFileDialog.getExistingDirectory(HomeFrame, 'Select directory', '/home')
+    HomeFrame.ui.TextEditDirectoryPath.clear()
+    HomeFrame.ui.TextEditDirectoryPath.insert(PathDirectory)
+
+    global GlobalConfig
+    GlobalConfig.PathDirectory = PathDirectory
 

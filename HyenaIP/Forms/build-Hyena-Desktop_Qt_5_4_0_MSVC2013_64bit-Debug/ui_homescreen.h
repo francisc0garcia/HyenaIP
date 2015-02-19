@@ -15,10 +15,10 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
@@ -37,7 +37,7 @@ public:
     QWidget *tab;
     QLabel *label_2;
     QPushButton *BtnCreateLoad;
-    QPlainTextEdit *TextEditDirectoryPath;
+    QLineEdit *TextEditDirectoryPath;
     QWidget *tab_3;
     QPushButton *BtnImageDAQ;
     QLabel *label_4;
@@ -90,14 +90,9 @@ public:
         BtnCreateLoad = new QPushButton(tab);
         BtnCreateLoad->setObjectName(QStringLiteral("BtnCreateLoad"));
         BtnCreateLoad->setGeometry(QRect(430, 170, 330, 50));
-        TextEditDirectoryPath = new QPlainTextEdit(tab);
+        TextEditDirectoryPath = new QLineEdit(tab);
         TextEditDirectoryPath->setObjectName(QStringLiteral("TextEditDirectoryPath"));
         TextEditDirectoryPath->setGeometry(QRect(10, 230, 751, 41));
-        TextEditDirectoryPath->setInputMethodHints(Qt::ImhNone);
-        TextEditDirectoryPath->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        TextEditDirectoryPath->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-        TextEditDirectoryPath->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
-        TextEditDirectoryPath->setLineWrapMode(QPlainTextEdit::NoWrap);
         tabWidget->addTab(tab, QString());
         tab_3 = new QWidget();
         tab_3->setObjectName(QStringLiteral("tab_3"));
@@ -182,9 +177,6 @@ public:
         actionLicense->setText(QApplication::translate("HomeScreen", "License", 0));
         label_2->setText(QApplication::translate("HomeScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Project Module</span></p><p><br/><span style=\" font-style:italic;\">Welcome to Hyena!</span></p><p>The first step is define a specific folder as working directory, in which application</p><p>will save the images as well as will perform the training and test process.</p><p><br/>Please select a folder for the project:<br/><br/><br/><br/><br/></p></body></html>", 0));
         BtnCreateLoad->setText(QApplication::translate("HomeScreen", "Select working directory", 0));
-#ifndef QT_NO_TOOLTIP
-        TextEditDirectoryPath->setToolTip(QApplication::translate("HomeScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Working directory</span></p><p>Insert here the path for the working directory or select it by</p><p>&quot;Select working directory&quot; option.</p></body></html>", 0));
-#endif // QT_NO_TOOLTIP
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("HomeScreen", "Project", 0));
         BtnImageDAQ->setText(QApplication::translate("HomeScreen", "Launch Image Acquisition module", 0));
         label_4->setText(QApplication::translate("HomeScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Image acquisition module</span></p><p><br/>This module allows you get and store images for future training or classification processes.</p><p>It is possible get image in real time from the camera or select images from the disk.</p><p><br/></p><p><br/></p><p><br/></p><p><br/></p></body></html>", 0));

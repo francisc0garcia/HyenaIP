@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:/3DCV_projects/HyenaIP/HyenaIP/Forms/Hyena/homescreen.ui'
 #
-# Created: Wed Feb 18 19:29:18 2015
+# Created: Thu Feb 19 17:51:53 2015
 #      by: PyQt4 UI code generator 4.9.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,7 +33,7 @@ class Ui_HomeScreen(object):
         font.setFamily(_fromUtf8("Century Gothic"))
         HomeScreen.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8("Media/Images/HyenaLogo.gif")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("../../Media/Images/HyenaLogo.gif")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         HomeScreen.setWindowIcon(icon)
         HomeScreen.setDockOptions(QtGui.QMainWindow.AllowTabbedDocks|QtGui.QMainWindow.AnimatedDocks)
         self.centralWidget = QtGui.QWidget(HomeScreen)
@@ -49,13 +49,8 @@ class Ui_HomeScreen(object):
         self.BtnCreateLoad = QtGui.QPushButton(self.tab)
         self.BtnCreateLoad.setGeometry(QtCore.QRect(430, 170, 330, 50))
         self.BtnCreateLoad.setObjectName(_fromUtf8("BtnCreateLoad"))
-        self.TextEditDirectoryPath = QtGui.QPlainTextEdit(self.tab)
+        self.TextEditDirectoryPath = QtGui.QLineEdit(self.tab)
         self.TextEditDirectoryPath.setGeometry(QtCore.QRect(10, 230, 751, 41))
-        self.TextEditDirectoryPath.setInputMethodHints(QtCore.Qt.ImhNone)
-        self.TextEditDirectoryPath.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.TextEditDirectoryPath.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        #self.TextEditDirectoryPath.setSizeAdjustPolicy(QtGui.QAbstractScrollArea.AdjustToContents)
-        self.TextEditDirectoryPath.setLineWrapMode(QtGui.QPlainTextEdit.NoWrap)
         self.TextEditDirectoryPath.setObjectName(_fromUtf8("TextEditDirectoryPath"))
         self.tabWidget.addTab(self.tab, _fromUtf8(""))
         self.tab_3 = QtGui.QWidget()
@@ -103,7 +98,7 @@ class Ui_HomeScreen(object):
         self.label_5 = QtGui.QLabel(self.centralWidget)
         self.label_5.setGeometry(QtCore.QRect(10, 10, 61, 91))
         self.label_5.setText(_fromUtf8(""))
-        self.label_5.setPixmap(QtGui.QPixmap(_fromUtf8("Media/Images/HyenaLogo.gif")))
+        self.label_5.setPixmap(QtGui.QPixmap(_fromUtf8("../../Media/Images/HyenaLogo.gif")))
         self.label_5.setObjectName(_fromUtf8("label_5"))
         HomeScreen.setCentralWidget(self.centralWidget)
         self.menuBar = QtGui.QMenuBar(HomeScreen)
@@ -138,7 +133,6 @@ class Ui_HomeScreen(object):
         HomeScreen.setWindowTitle(_translate("HomeScreen", "Hyena", None))
         self.label_2.setText(_translate("HomeScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Project Module</span></p><p><br/><span style=\" font-style:italic;\">Welcome to Hyena!</span></p><p>The first step is define a specific folder as working directory, in which application</p><p>will save the images as well as will perform the training and test process.</p><p><br/>Please select a folder for the project:<br/><br/><br/><br/><br/></p></body></html>", None))
         self.BtnCreateLoad.setText(_translate("HomeScreen", "Select working directory", None))
-        self.TextEditDirectoryPath.setToolTip(_translate("HomeScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Working directory</span></p><p>Insert here the path for the working directory or select it by</p><p>&quot;Select working directory&quot; option.</p></body></html>", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("HomeScreen", "Project", None))
         self.BtnImageDAQ.setText(_translate("HomeScreen", "Launch Image Acquisition module", None))
         self.label_4.setText(_translate("HomeScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Image acquisition module</span></p><p><br/>This module allows you get and store images for future training or classification processes.</p><p>It is possible get image in real time from the camera or select images from the disk.</p><p><br/></p><p><br/></p><p><br/></p><p><br/></p></body></html>", None))

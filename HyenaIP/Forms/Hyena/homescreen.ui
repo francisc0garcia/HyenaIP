@@ -80,7 +80,7 @@
        <string>Select working directory</string>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="TextEditDirectoryPath">
+     <widget class="QLineEdit" name="TextEditDirectoryPath">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -88,24 +88,6 @@
         <width>751</width>
         <height>41</height>
        </rect>
-      </property>
-      <property name="toolTip">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Working directory&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Insert here the path for the working directory or select it by&lt;/p&gt;&lt;p&gt;&amp;quot;Select working directory&amp;quot; option.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-      <property name="inputMethodHints">
-       <set>Qt::ImhNone</set>
-      </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
-      </property>
-      <property name="horizontalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOff</enum>
-      </property>
-      <property name="sizeAdjustPolicy">
-       <enum>QAbstractScrollArea::AdjustToContents</enum>
-      </property>
-      <property name="lineWrapMode">
-       <enum>QPlainTextEdit::NoWrap</enum>
       </property>
      </widget>
     </widget>

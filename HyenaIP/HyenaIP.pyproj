@@ -23,6 +23,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Classes\GlobalSettings.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Classes\VideoHandler.py">
       <SubType>Code</SubType>
     </Compile>

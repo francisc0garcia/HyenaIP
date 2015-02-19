@@ -3,9 +3,7 @@ from PyQt4 import QtGui, QtCore, Qt
 
 from Forms.Hyena.UIhomescreen import *
 from Forms.Hyena.UIhomeScreen_EventHandler import *
-
 from Forms.ImageAcquisitionModule.UIimageacquisition import *
-
 
 class GUI_UIimageacquisition(QtGui.QMainWindow):
     def __init__(self, parent=None):
@@ -20,7 +18,7 @@ class Gui_UIhomescreen(QtGui.QMainWindow):
         self.ui.setupUi(self)
         self.update()
 
-        LoadEvents(self)
+        Ui_HomeScreen_LoadEvents(self)
 
 
 
