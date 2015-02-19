@@ -23,8 +23,20 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Classes\VideoHandler.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\__init__.py" />
     <Compile Include="Forms\Hyena\UIhomescreen.py" />
+    <Compile Include="Forms\Hyena\UIhomeScreen_EventHandler.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Forms\Hyena\__init__.py" />
+    <Compile Include="Forms\ImageAcquisitionModule\UIimageacquisition.py" />
+    <Compile Include="Forms\ImageAcquisitionModule\UIimageacquisition_EventHandler.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\ImageAcquisitionModule\__init__.py" />
     <Compile Include="Forms\__init__.py" />
     <Compile Include="HyenaIP.py" />
   </ItemGroup>
@@ -34,6 +46,7 @@
     <Folder Include="Data\" />
     <Folder Include="Docs\" />
     <Folder Include="Forms\Hyena\" />
+    <Folder Include="Forms\ImageAcquisitionModule\" />
     <Folder Include="Media\" />
     <Folder Include="Media\" />
     <Folder Include="Media\Images\" />
@@ -42,12 +55,6 @@
     <Folder Include="Test\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Forms\Hyena\homescreen.cpp" />
-    <Content Include="Forms\Hyena\homescreen.h" />
-    <Content Include="Forms\Hyena\homescreen.ui" />
-    <Content Include="Forms\Hyena\Hyena.pro" />
-    <Content Include="Forms\Hyena\Hyena.pro.user" />
-    <Content Include="Forms\Hyena\main.cpp" />
     <Content Include="Media\Images\HyenaLogo.gif" />
     <Content Include="Media\Images\HyenaLogo.gif" />
     <Content Include="Media\Images\HyenaLogo.gif" />
