@@ -33,4 +33,6 @@ class VideoHandler(object):
         except:
             e = sys.exc_info()[0]
             return None
+    def StopVideo(self):
+        self.capture.release
             

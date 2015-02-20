@@ -40,6 +40,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Forms\ImageAcquisitionModule\__init__.py" />
+    <Compile Include="Forms\ImageProcessing\UIimageprocessing.py" />
+    <Compile Include="Forms\ImageProcessing\UIimageprocessing_EventHandler.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Forms\ImageProcessing\__init__.py" />
     <Compile Include="Forms\__init__.py" />
     <Compile Include="HyenaIP.py" />
   </ItemGroup>
@@ -50,6 +55,7 @@
     <Folder Include="Docs\" />
     <Folder Include="Forms\Hyena\" />
     <Folder Include="Forms\ImageAcquisitionModule\" />
+    <Folder Include="Forms\ImageProcessing\" />
     <Folder Include="Media\" />
     <Folder Include="Media\" />
     <Folder Include="Media\Images\" />

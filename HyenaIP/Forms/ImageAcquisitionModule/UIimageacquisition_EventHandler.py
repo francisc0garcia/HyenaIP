@@ -8,6 +8,7 @@ from Classes.VideoHandler import *
 HomeFrame = 0
 GlobalConfig = GlobalSettings()
 ImageAcquisitionFrame = 0
+IsCameraRecorded = False
 
 CameraFrameActual = {}
 
@@ -22,11 +23,12 @@ def UIimageacquisition_LoadEvents(parent, Config):
     GlobalConfig = Config
 
     global ImageAcquisitionFrame
-    ImageAcquisitionFrame = HomeFrame.GUI_UIimageacquisition
+    ImageAcquisitionFrame = HomeFrame.GUI_Ui_ImageAcquisition
+    ImageAcquisitionFrame.video = False
 
     ImageAcquisitionFrame.actionClose_Module.triggered.connect(CloseWindow)
     ImageAcquisitionFrame.BtnSelectImages.clicked.connect(SelectExistingFile)
-    ImageAcquisitionFrame.BtnConnectDevice.clicked.connect(ConnectDevice)
+    ImageAcquisitionFrame.BtnConnectDevice.clicked.connect(Turn_Camera)
     ImageAcquisitionFrame.BtnAddNewPackage.clicked.connect(CreateNewPackage)
     ImageAcquisitionFrame.BtnRemovePackage.clicked.connect(RemovePackageSelected)
     ImageAcquisitionFrame.BtnTakePhoto.clicked.connect(TakePhoto)
@@ -52,7 +54,7 @@ def LoadInitialMethods():
         ImageAcquisitionFrame.ListPackages.item(i).setSelected(True)
 
 def CloseWindow():
-        sys.exit(0)
+    sys.exit(0)
 
 def GetItemsSelected():
     items = ImageAcquisitionFrame.ListPackages.count()
@@ -83,9 +85,15 @@ def SelectExistingFile():
                 shutil.copy2(OriginalPath, NewName)
     LoadInitialMethods()
 
+def Turn_Camera():
+    if(IsCameraRecorded):
+        StopVideo()
+    else:
+        ConnectDevice()
 
 def ConnectDevice():
-    ImageAcquisitionFrame.video = VideoHandler()
+    if not (ImageAcquisitionFrame.video):
+        ImageAcquisitionFrame.video = VideoHandler()
     ImageAcquisitionFrame._timer = QtCore.QTimer(HomeFrame)
     ImageAcquisitionFrame._timer.timeout.connect(play)
     ImageAcquisitionFrame._timer.start(27)
@@ -97,8 +105,19 @@ def play():
         CameraFrameActual = ImageAcquisitionFrame.video.convertFrame()
         ImageAcquisitionFrame.LabelImage.setPixmap(CameraFrameActual)
         ImageAcquisitionFrame.LabelImage.setScaledContents(True)
+
+        global IsCameraRecorded
+        IsCameraRecorded = True
+        ImageAcquisitionFrame.BtnConnectDevice.setText("Turn OFF camera");
     except TypeError:
         print "No frame"
+
+def StopVideo():
+    ImageAcquisitionFrame._timer.stop()
+    ImageAcquisitionFrame.video.StopVideo()
+    global IsCameraRecorded
+    IsCameraRecorded = False
+    ImageAcquisitionFrame.BtnConnectDevice.setText("Turn ON camera");
 
 def CreateNewPackage():
     Dir = GlobalConfig.PathDirectory
