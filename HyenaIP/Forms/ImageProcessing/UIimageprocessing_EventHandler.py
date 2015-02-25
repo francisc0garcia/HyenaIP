@@ -1,5 +1,6 @@
 import sys, os, cv2, numpy as np, shutil, uuid
-import matplotlib
+from matplotlib.image import imsave as imsave
+from matplotlib import image as image
 import matplotlib.pyplot as plt
 from matplotlib.backends import qt4_compat
 from matplotlib.backends.backend_qt4agg import (
@@ -123,9 +124,6 @@ def LoadInitialMethods():
     for i in selectedItems:
         ImageProcessingFrame.ListPackages.item(i).setSelected(True)
 
-
-
-
 def CloseWindow():
     sys.exit(0)
 
@@ -192,6 +190,14 @@ def GetPreviewImage():
     return img
 
 def ColorShape_Resize(img):
+    if(ImageProcessingFrame.Cb_EnableColorShape.isChecked() ):
+        Width = ImageProcessingFrame.Sb_Height.value()
+        Height = ImageProcessingFrame.Sb_Height.value()
+
+        if( Width > 0 and Height > 0):
+            img = cv2.resize(img,(Width, Height), interpolation = cv2.INTER_CUBIC)
+            #img = img.resize((Width,Height), image.NEAREST)
+            #img = np.asarray(TempImg)
     return img
 
 def ColorShape_ChangeColor(img):
@@ -249,6 +255,8 @@ def Thresholding_Images(img):
         Cb_ADAP_GAUSSIAN = ImageProcessingFrame.Cb_ADAP_GAUSSIAN.isChecked()
         Cb_OTSU = ImageProcessingFrame.Cb_OTSU.isChecked()
 
+        img = img.astype(np.uint8)
+
         if(Cb_BINARY):
             ret, img = cv2.threshold(img, Hs_LevelThreshold, 255,cv2.THRESH_BINARY)
         if(Cb_BINARY_INV):
@@ -299,28 +307,36 @@ def ProcessNewPackage():
             if not os.path.exists( DestFolder ):
                 os.makedirs(str(DestFolder))
 
+            ImageProcessingFrame.progressBar.setMaximum(len(Files))
+
             FirstFile = ""
+            IndexFile = 0
             for f in Files:
                 if os.path.splitext(f)[1].lower() in ('.jpg', '.jpeg', '.png', '.bmp'):
                     FirstFile = str( Dir + "\\" + f )
+                    
                     #read Image
                     OriginalImage_CV2 = cv2.imread(FirstFile)
                     OriginalImage_CV2 = cv2.cvtColor(OriginalImage_CV2, cv2.COLOR_BGR2GRAY)
+                    
                     #Apply filters
                     FilteredImage = OriginalImage_CV2
                     FilteredImage = ColorShape_Resize(FilteredImage)
                     FilteredImage = ColorShape_ChangeColor(FilteredImage)
                     FilteredImage = Thresholding_Images(FilteredImage)
                     FilteredImage = CannyEdges_Images(FilteredImage)
-                    #Save image
-                    #get random name
                     
+                    #Save image
+                    
+                    #get random name
                     NewNameFile = str(uuid.uuid4()).split('-')[0]
                     NewFile = str( DestFolder + '\\' + NewNameFile + '.jpg' )
+                    imsave(NewFile, FilteredImage,  cmap='gray')
 
-                    #cv2.imwrite(NewFile, FilteredImage)
+                    ImageProcessingFrame.progressBar.setValue(IndexFile)
+                    IndexFile = IndexFile + 1
 
-                    matplotlib.image.imsave(NewFile, FilteredImage)
+            ImageProcessingFrame.progressBar.setValue(0)
             LoadInitialMethods()
     else:
         img = 0

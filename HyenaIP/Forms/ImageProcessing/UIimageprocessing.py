@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:/3DCV_projects/HyenaIP/HyenaIP/Forms/ImageProcessing/imageprocessing.ui'
 #
-# Created: Tue Feb 24 17:50:00 2015
+# Created: Wed Feb 25 14:14:56 2015
 #      by: PyQt4 UI code generator 4.9.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -61,6 +61,12 @@ class Ui_ImageProcessing(object):
         self.label_2 = QtGui.QLabel(self.groupBox)
         self.label_2.setGeometry(QtCore.QRect(10, 30, 71, 31))
         self.label_2.setObjectName(_fromUtf8("label_2"))
+        self.progressBar = QtGui.QProgressBar(self.groupBox)
+        self.progressBar.setEnabled(False)
+        self.progressBar.setGeometry(QtCore.QRect(10, 80, 341, 31))
+        self.progressBar.setProperty("value", 0)
+        self.progressBar.setTextVisible(False)
+        self.progressBar.setObjectName(_fromUtf8("progressBar"))
         self.tabWidget = QtGui.QTabWidget(self.centralWidget)
         self.tabWidget.setGeometry(QtCore.QRect(340, 70, 371, 701))
         self.tabWidget.setTabPosition(QtGui.QTabWidget.West)
