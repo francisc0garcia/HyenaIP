@@ -44,6 +44,9 @@
     </Compile>
     <Compile Include="Forms\ImageAcquisitionModule\__init__.py" />
     <Compile Include="Forms\ImageOnlineTest\UIimageonlinetest.py" />
+    <Compile Include="Forms\ImageOnlineTest\UIimageonlinetest_EventHandler.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Forms\ImageOnlineTest\__init__.py" />
     <Compile Include="Forms\ImageProcessing\UIimageprocessing.py" />
     <Compile Include="Forms\ImageProcessing\UIimageprocessing_EventHandler.py">

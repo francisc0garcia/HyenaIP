@@ -10,6 +10,9 @@ from Forms.ImageProcessing.UIimageprocessing_EventHandler import *
 from Forms.ImageTraining.UIimagetraining import *
 from Forms.ImageTraining.UIimagetraining_EventHandler import *
 
+from Forms.ImageOnlineTest.UIimageonlinetest import *
+from Forms.ImageOnlineTest.UIimageonlinetest_EventHandler import *
+
 HomeFrame = 0
 GlobalConfig = GlobalSettings()
 
@@ -40,6 +43,15 @@ class GUI_Ui_ImageTraining(QtGui.QMainWindow):
 
         UIimageTraining_LoadEvents(self, GlobalConfig)
 
+class GUI_Ui_ImageOnlineTest(QtGui.QMainWindow):
+    def __init__(self, parent=None):
+        QtGui.QWidget.__init__(self, parent)
+        self.GUI_Ui_ImageOnlineTest =  Ui_ImageOnlineTest()
+        self.GUI_Ui_ImageOnlineTest.setupUi(self)
+        self.update()
+
+        UIimageOnlineTest_LoadEvents(self, GlobalConfig)
+
 
 def Ui_HomeScreen_LoadEvents(parent):
     '''
@@ -63,6 +75,10 @@ def Ui_HomeScreen_LoadEvents(parent):
         HomeFrame.IT = GUI_Ui_ImageTraining()
         HomeFrame.IT.show()
 
+    def on_BtnTestError_clicked():
+        HomeFrame.IOT = GUI_Ui_ImageOnlineTest()
+        HomeFrame.IOT.show()
+
     def on_BtnCreateLoad_clicked():
         ShowFileDialog()
 
@@ -73,6 +89,7 @@ def Ui_HomeScreen_LoadEvents(parent):
     HomeFrame.ui.BtnImageDAQ.clicked.connect(on_BtnImageDAQ_clicked)
     HomeFrame.ui.BtnImageProcessing.clicked.connect(on_BtnImageProcessing_Clicked)
     HomeFrame.ui.BtnTraining.clicked.connect(on_BtnTraining_clicked)
+    HomeFrame.ui.BtnTestError.clicked.connect(on_BtnTestError_clicked)
     HomeFrame.ui.actionExit.triggered.connect(CloseWindow)
 
 def CloseWindow():
