@@ -143,7 +143,7 @@ public:
         HomeScreen->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(HomeScreen);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 800, 31));
+        menuBar->setGeometry(QRect(0, 0, 800, 26));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuAbout = new QMenu(menuBar);
@@ -184,12 +184,12 @@ public:
         BtnImageProcessing->setText(QApplication::translate("HomeScreen", "Launch Image Processing module", 0));
         label_6->setText(QApplication::translate("HomeScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Image Processing Module</span></p><p><br/></p><p>This module allows you perform different processing task in images such as filtering,</p><p>thresholding, canny detector, gaussian and laplace filters, in order to prepare </p><p>the images for futures process of training and identification.</p><p><br/></p><p><br/></p><p><br/></p><p><br/></p></body></html>", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("HomeScreen", "2. Processing", 0));
-        BtnTraining->setText(QApplication::translate("HomeScreen", "Launch Training and clustering module", 0));
-        label_7->setText(QApplication::translate("HomeScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Image training module</span></p><p><br/></p><p>This module allow you run training algorithms for learning and clustering of images, like SVM or KNN, </p><p>in order to complete recognition or detection tasks.</p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p></body></html>", 0));
+        BtnTraining->setText(QApplication::translate("HomeScreen", "Launch Training module", 0));
+        label_7->setText(QApplication::translate("HomeScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Image training module</span></p><p><br/></p><p>This module allow you train algorithms for learning features of images, based on</p><p>FaceRecognizer class in OpenCV, in order to complete recognition or detection tasks.</p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p></body></html>", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_4), QApplication::translate("HomeScreen", "3. Training", 0));
-        BtnTestError->setText(QApplication::translate("HomeScreen", "Launch Test and error analysis module", 0));
-        label_8->setText(QApplication::translate("HomeScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Test and error analysis module</span></p><p><br/></p><p>This module allows you validate and verify previous process of clustering and </p><p>classification of images, performed with the Training module.</p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p></body></html>", 0));
-        tabWidget->setTabText(tabWidget->indexOf(tab_5), QApplication::translate("HomeScreen", "4. Test and error analysis", 0));
+        BtnTestError->setText(QApplication::translate("HomeScreen", "Launch Online test module", 0));
+        label_8->setText(QApplication::translate("HomeScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Online Test of Models</span></p><p><br/></p><p>This module allows you test in real time the models which was trained in the Training module,</p><p>it is necessary to train the packages before the Online test.</p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p></body></html>", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tab_5), QApplication::translate("HomeScreen", "4. Online Test of models ", 0));
         label->setText(QApplication::translate("HomeScreen", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Hyena</span></p><p><span style=\" font-size:7pt; color:#535353;\">Acquisition, processing, training and testing process </span></p><p><span style=\" font-size:7pt; color:#535353;\">of images with python and OpenCV.</span></p></body></html>", 0));
         label_3->setText(QApplication::translate("HomeScreen", "<html><head/><body><p align=\"right\"><span style=\" font-size:7pt;\">Developed by</span></p><p align=\"right\"><span style=\" font-size:7pt; font-weight:600;\">Francisco J Garcia R</span></p><p align=\"right\"><span style=\" font-size:7pt; font-weight:600;\">2015</span></p></body></html>", 0));
         label_5->setText(QString());

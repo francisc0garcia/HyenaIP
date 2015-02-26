@@ -26,6 +26,9 @@
     <Compile Include="Classes\GlobalSettings.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\Utils.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Classes\VideoHandler.py">
       <SubType>Code</SubType>
     </Compile>
@@ -40,12 +43,17 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Forms\ImageAcquisitionModule\__init__.py" />
+    <Compile Include="Forms\ImageOnlineTest\UIimageonlinetest.py" />
+    <Compile Include="Forms\ImageOnlineTest\__init__.py" />
     <Compile Include="Forms\ImageProcessing\UIimageprocessing.py" />
     <Compile Include="Forms\ImageProcessing\UIimageprocessing_EventHandler.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Forms\ImageProcessing\__init__.py" />
     <Compile Include="Forms\ImageTraining\UIimagetraining.py" />
+    <Compile Include="Forms\ImageTraining\UIimagetraining_EventHandler.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Forms\ImageTraining\__init__.py" />
     <Compile Include="Forms\__init__.py" />
     <Compile Include="HyenaIP.py" />
@@ -57,6 +65,7 @@
     <Folder Include="Docs\" />
     <Folder Include="Forms\Hyena\" />
     <Folder Include="Forms\ImageAcquisitionModule\" />
+    <Folder Include="Forms\ImageOnlineTest\" />
     <Folder Include="Forms\ImageProcessing\" />
     <Folder Include="Forms\ImageTraining\" />
     <Folder Include="Media\" />

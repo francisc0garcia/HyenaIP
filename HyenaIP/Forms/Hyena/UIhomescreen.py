@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:/3DCV_projects/HyenaIP/HyenaIP/Forms/Hyena/homescreen.ui'
 #
-# Created: Thu Feb 19 17:51:53 2015
+# Created: Thu Feb 26 10:22:08 2015
 #      by: PyQt4 UI code generator 4.9.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -102,7 +102,7 @@ class Ui_HomeScreen(object):
         self.label_5.setObjectName(_fromUtf8("label_5"))
         HomeScreen.setCentralWidget(self.centralWidget)
         self.menuBar = QtGui.QMenuBar(HomeScreen)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 800, 31))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 800, 26))
         self.menuBar.setObjectName(_fromUtf8("menuBar"))
         self.menuFile = QtGui.QMenu(self.menuBar)
         self.menuFile.setObjectName(_fromUtf8("menuFile"))
@@ -140,12 +140,12 @@ class Ui_HomeScreen(object):
         self.BtnImageProcessing.setText(_translate("HomeScreen", "Launch Image Processing module", None))
         self.label_6.setText(_translate("HomeScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Image Processing Module</span></p><p><br/></p><p>This module allows you perform different processing task in images such as filtering,</p><p>thresholding, canny detector, gaussian and laplace filters, in order to prepare </p><p>the images for futures process of training and identification.</p><p><br/></p><p><br/></p><p><br/></p><p><br/></p></body></html>", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("HomeScreen", "2. Processing", None))
-        self.BtnTraining.setText(_translate("HomeScreen", "Launch Training and clustering module", None))
-        self.label_7.setText(_translate("HomeScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Image training module</span></p><p><br/></p><p>This module allow you run training algorithms for learning and clustering of images, like SVM or KNN, </p><p>in order to complete recognition or detection tasks.</p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p></body></html>", None))
+        self.BtnTraining.setText(_translate("HomeScreen", "Launch Training module", None))
+        self.label_7.setText(_translate("HomeScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Image training module</span></p><p><br/></p><p>This module allow you train algorithms for learning features of images, based on</p><p>FaceRecognizer class in OpenCV, in order to complete recognition or detection tasks.</p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p></body></html>", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("HomeScreen", "3. Training", None))
-        self.BtnTestError.setText(_translate("HomeScreen", "Launch Test and error analysis module", None))
-        self.label_8.setText(_translate("HomeScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Test and error analysis module</span></p><p><br/></p><p>This module allows you validate and verify previous process of clustering and </p><p>classification of images, performed with the Training module.</p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p></body></html>", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), _translate("HomeScreen", "4. Test and error analysis", None))
+        self.BtnTestError.setText(_translate("HomeScreen", "Launch Online test module", None))
+        self.label_8.setText(_translate("HomeScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Online Test of Models</span></p><p><br/></p><p>This module allows you test in real time the models which was trained in the Training module,</p><p>it is necessary to train the packages before the Online test.</p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p></body></html>", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), _translate("HomeScreen", "4. Online Test of models ", None))
         self.label.setText(_translate("HomeScreen", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Hyena</span></p><p><span style=\" font-size:7pt; color:#535353;\">Acquisition, processing, training and testing process </span></p><p><span style=\" font-size:7pt; color:#535353;\">of images with python and OpenCV.</span></p></body></html>", None))
         self.label_3.setText(_translate("HomeScreen", "<html><head/><body><p align=\"right\"><span style=\" font-size:7pt;\">Developed by</span></p><p align=\"right\"><span style=\" font-size:7pt; font-weight:600;\">Francisco J Garcia R</span></p><p align=\"right\"><span style=\" font-size:7pt; font-weight:600;\">2015</span></p></body></html>", None))
         self.menuFile.setTitle(_translate("HomeScreen", "File", None))

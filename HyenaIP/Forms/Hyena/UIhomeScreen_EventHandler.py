@@ -7,6 +7,9 @@ from Forms.ImageAcquisitionModule.UIimageacquisition_EventHandler import *
 from Forms.ImageProcessing.UIimageprocessing import *
 from Forms.ImageProcessing.UIimageprocessing_EventHandler import *
 
+from Forms.ImageTraining.UIimagetraining import *
+from Forms.ImageTraining.UIimagetraining_EventHandler import *
+
 HomeFrame = 0
 GlobalConfig = GlobalSettings()
 
@@ -28,6 +31,15 @@ class GUI_Ui_ImageProcessing(QtGui.QMainWindow):
 
         UIimageProcessing_LoadEvents(self, GlobalConfig)
 
+class GUI_Ui_ImageTraining(QtGui.QMainWindow):
+    def __init__(self, parent=None):
+        QtGui.QWidget.__init__(self, parent)
+        self.GUI_Ui_ImageTraining =  Ui_ImageTraining()
+        self.GUI_Ui_ImageTraining.setupUi(self)
+        self.update()
+
+        UIimageTraining_LoadEvents(self, GlobalConfig)
+
 
 def Ui_HomeScreen_LoadEvents(parent):
     '''
@@ -47,6 +59,10 @@ def Ui_HomeScreen_LoadEvents(parent):
         HomeFrame.IP = GUI_Ui_ImageProcessing()
         HomeFrame.IP.show()
 
+    def on_BtnTraining_clicked():
+        HomeFrame.IT = GUI_Ui_ImageTraining()
+        HomeFrame.IT.show()
+
     def on_BtnCreateLoad_clicked():
         ShowFileDialog()
 
@@ -56,6 +72,7 @@ def Ui_HomeScreen_LoadEvents(parent):
     HomeFrame.ui.BtnCreateLoad.clicked.connect(on_BtnCreateLoad_clicked)
     HomeFrame.ui.BtnImageDAQ.clicked.connect(on_BtnImageDAQ_clicked)
     HomeFrame.ui.BtnImageProcessing.clicked.connect(on_BtnImageProcessing_Clicked)
+    HomeFrame.ui.BtnTraining.clicked.connect(on_BtnTraining_clicked)
     HomeFrame.ui.actionExit.triggered.connect(CloseWindow)
 
 def CloseWindow():
