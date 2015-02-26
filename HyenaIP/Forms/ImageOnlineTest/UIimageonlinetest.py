@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:/3DCV_projects/HyenaIP/HyenaIP/Forms/ImageOnlineTest/imageonlinetest.ui'
 #
-# Created: Thu Feb 26 10:29:25 2015
+# Created: Thu Feb 26 12:08:07 2015
 #      by: PyQt4 UI code generator 4.9.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,7 +33,7 @@ class Ui_ImageOnlineTest(object):
         font.setFamily(_fromUtf8("Century Gothic"))
         ImageOnlineTest.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8("../../Media/Images/HyenaLogo.gif")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("Media/Images/HyenaLogo.gif")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         ImageOnlineTest.setWindowIcon(icon)
         self.centralWidget = QtGui.QWidget(ImageOnlineTest)
         self.centralWidget.setObjectName(_fromUtf8("centralWidget"))
@@ -43,7 +43,7 @@ class Ui_ImageOnlineTest(object):
         self.Lb_cameraInput = QtGui.QLabel(self.groupBox)
         self.Lb_cameraInput.setGeometry(QtCore.QRect(10, 20, 551, 601))
         self.Lb_cameraInput.setText(_fromUtf8(""))
-        self.Lb_cameraInput.setPixmap(QtGui.QPixmap(_fromUtf8("../../Media/Images/HyenaLogo.gif")))
+        self.Lb_cameraInput.setPixmap(QtGui.QPixmap(_fromUtf8("Media/Images/HyenaLogo.gif")))
         self.Lb_cameraInput.setAlignment(QtCore.Qt.AlignCenter)
         self.Lb_cameraInput.setObjectName(_fromUtf8("Lb_cameraInput"))
         self.groupBox_2 = QtGui.QGroupBox(self.centralWidget)
@@ -53,8 +53,17 @@ class Ui_ImageOnlineTest(object):
         self.Btn_Start.setGeometry(QtCore.QRect(20, 40, 381, 41))
         self.Btn_Start.setObjectName(_fromUtf8("Btn_Start"))
         self.Pt_Results = QtGui.QPlainTextEdit(self.groupBox_2)
-        self.Pt_Results.setGeometry(QtCore.QRect(20, 100, 381, 521))
+        self.Pt_Results.setGeometry(QtCore.QRect(20, 500, 381, 121))
         self.Pt_Results.setObjectName(_fromUtf8("Pt_Results"))
+        self.groupBox_3 = QtGui.QGroupBox(self.groupBox_2)
+        self.groupBox_3.setGeometry(QtCore.QRect(20, 90, 381, 401))
+        self.groupBox_3.setObjectName(_fromUtf8("groupBox_3"))
+        self.Lb_detectedFace = QtGui.QLabel(self.groupBox_3)
+        self.Lb_detectedFace.setGeometry(QtCore.QRect(10, 20, 361, 371))
+        self.Lb_detectedFace.setText(_fromUtf8(""))
+        self.Lb_detectedFace.setPixmap(QtGui.QPixmap(_fromUtf8("Media/Images/HyenaLogo.gif")))
+        self.Lb_detectedFace.setAlignment(QtCore.Qt.AlignCenter)
+        self.Lb_detectedFace.setObjectName(_fromUtf8("Lb_detectedFace"))
         ImageOnlineTest.setCentralWidget(self.centralWidget)
         self.menuBar = QtGui.QMenuBar(ImageOnlineTest)
         self.menuBar.setGeometry(QtCore.QRect(0, 0, 1024, 26))
@@ -87,6 +96,7 @@ class Ui_ImageOnlineTest(object):
         self.groupBox.setTitle(_translate("ImageOnlineTest", "Camera input", None))
         self.groupBox_2.setTitle(_translate("ImageOnlineTest", "Results", None))
         self.Btn_Start.setText(_translate("ImageOnlineTest", "Start online test", None))
+        self.groupBox_3.setTitle(_translate("ImageOnlineTest", "Detected face", None))
         self.menuFile.setTitle(_translate("ImageOnlineTest", "File", None))
         self.menuAbout.setTitle(_translate("ImageOnlineTest", "About", None))
         self.actionClose_Module.setText(_translate("ImageOnlineTest", "Close Module", None))

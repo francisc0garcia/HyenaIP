@@ -73,12 +73,25 @@
     <Folder Include="Forms\ImageTraining\" />
     <Folder Include="Media\" />
     <Folder Include="Media\" />
+    <Folder Include="Media\haarcascades\" />
     <Folder Include="Media\Images\" />
     <Folder Include="Media\Images\" />
     <Folder Include="Media\Images\" />
     <Folder Include="Test\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Media\haarcascades\haarcascade_eye.xml" />
+    <Content Include="Media\haarcascades\haarcascade_frontalface_alt.xml" />
+    <Content Include="Media\haarcascades\haarcascade_frontalface_alt2.xml" />
+    <Content Include="Media\haarcascades\haarcascade_frontalface_alt_tree.xml" />
+    <Content Include="Media\haarcascades\haarcascade_frontalface_default.xml" />
+    <Content Include="Media\haarcascades\haarcascade_lefteye_2splits.xml" />
+    <Content Include="Media\haarcascades\haarcascade_mcs_lefteye.xml" />
+    <Content Include="Media\haarcascades\haarcascade_mcs_mouth.xml" />
+    <Content Include="Media\haarcascades\haarcascade_mcs_nose.xml" />
+    <Content Include="Media\haarcascades\haarcascade_mcs_righteye.xml" />
+    <Content Include="Media\haarcascades\haarcascade_profileface.xml" />
+    <Content Include="Media\haarcascades\haarcascade_righteye_2splits.xml" />
     <Content Include="Media\Images\HyenaLogo.gif" />
     <Content Include="Media\Images\HyenaLogo.gif" />
     <Content Include="Media\Images\HyenaLogo.gif" />
