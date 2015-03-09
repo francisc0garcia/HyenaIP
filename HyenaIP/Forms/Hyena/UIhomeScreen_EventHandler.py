@@ -13,6 +13,8 @@ from Forms.ImageTraining.UIimagetraining_EventHandler import *
 from Forms.ImageOnlineTest.UIimageonlinetest import *
 from Forms.ImageOnlineTest.UIimageonlinetest_EventHandler import *
 
+from Classes.ErrorHandler import *
+
 HomeFrame = 0
 GlobalConfig = GlobalSettings()
 
@@ -50,7 +52,11 @@ class GUI_Ui_ImageOnlineTest(QtGui.QMainWindow):
         self.GUI_Ui_ImageOnlineTest.setupUi(self)
         self.update()
 
-        UIimageOnlineTest_LoadEvents(self, GlobalConfig)
+        try:
+            UIimageOnlineTest_LoadEvents(self, GlobalConfig)
+        except:
+            showErrorMessage("Error in UIimageOnlineTest_LoadEvents", sys.exc_info() );
+            raise
 
 
 def Ui_HomeScreen_LoadEvents(parent):
@@ -92,14 +98,23 @@ def Ui_HomeScreen_LoadEvents(parent):
     HomeFrame.ui.BtnTestError.clicked.connect(on_BtnTestError_clicked)
     HomeFrame.ui.actionExit.triggered.connect(CloseWindow)
 
+    
 def CloseWindow():
-    sys.exit(0)
+    try:
+        sys.exit(0)
+    except:
+        showErrorMessage("Error in CloseWindow()", sys.exc_info() );
+        raise
     
 def ShowFileDialog():
-    PathDirectory = QtGui.QFileDialog.getExistingDirectory(HomeFrame, 'Select directory', '/home')
-    HomeFrame.ui.TextEditDirectoryPath.clear()
-    HomeFrame.ui.TextEditDirectoryPath.insert(PathDirectory)
+    try:
+        PathDirectory = QtGui.QFileDialog.getExistingDirectory(HomeFrame, 'Select directory', '/home')
+        HomeFrame.ui.TextEditDirectoryPath.clear()
+        HomeFrame.ui.TextEditDirectoryPath.insert(PathDirectory)
 
-    global GlobalConfig
-    GlobalConfig.PathDirectory = PathDirectory
+        global GlobalConfig
+        GlobalConfig.PathDirectory = PathDirectory
+    except:
+        showErrorMessage("Error in Method ShowFileDialog()", sys.exc_info() );
+        raise
 
