@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:/3DCV_projects/HyenaIP/HyenaIP/Forms/ImageTraining/imagetraining.ui'
 #
-# Created: Thu Feb 26 09:58:34 2015
+# Created: Tue Mar 10 10:21:21 2015
 #      by: PyQt4 UI code generator 4.9.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,7 +33,7 @@ class Ui_ImageTraining(object):
         font.setFamily(_fromUtf8("Century Gothic"))
         ImageTraining.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8("Media/Images/HyenaLogo.gif")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("/Media/Images/HyenaLogo.gif")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         ImageTraining.setWindowIcon(icon)
         self.centralWidget = QtGui.QWidget(ImageTraining)
         self.centralWidget.setObjectName(_fromUtf8("centralWidget"))
@@ -46,7 +46,7 @@ class Ui_ImageTraining(object):
         self.groupBox.setGeometry(QtCore.QRect(10, 10, 311, 281))
         self.groupBox.setObjectName(_fromUtf8("groupBox"))
         self.label = QtGui.QLabel(self.groupBox)
-        self.label.setGeometry(QtCore.QRect(10, 130, 101, 21))
+        self.label.setGeometry(QtCore.QRect(10, 130, 281, 21))
         self.label.setObjectName(_fromUtf8("label"))
         self.Hs_TrainTestSize = QtGui.QSlider(self.groupBox)
         self.Hs_TrainTestSize.setGeometry(QtCore.QRect(10, 160, 281, 31))
@@ -76,7 +76,7 @@ class Ui_ImageTraining(object):
         self.Lb_MeanFace = QtGui.QLabel(self.groupBox_2)
         self.Lb_MeanFace.setGeometry(QtCore.QRect(10, 20, 621, 251))
         self.Lb_MeanFace.setText(_fromUtf8(""))
-        self.Lb_MeanFace.setPixmap(QtGui.QPixmap(_fromUtf8("Media/Images/HyenaLogo.gif")))
+        self.Lb_MeanFace.setPixmap(QtGui.QPixmap(_fromUtf8("/Media/Images/HyenaLogo.gif")))
         self.Lb_MeanFace.setAlignment(QtCore.Qt.AlignCenter)
         self.Lb_MeanFace.setObjectName(_fromUtf8("Lb_MeanFace"))
         self.groupBox_3 = QtGui.QGroupBox(self.tab)
@@ -85,7 +85,7 @@ class Ui_ImageTraining(object):
         self.Lb_EigenFace = QtGui.QLabel(self.groupBox_3)
         self.Lb_EigenFace.setGeometry(QtCore.QRect(10, 20, 291, 251))
         self.Lb_EigenFace.setText(_fromUtf8(""))
-        self.Lb_EigenFace.setPixmap(QtGui.QPixmap(_fromUtf8("Media/Images/HyenaLogo.gif")))
+        self.Lb_EigenFace.setPixmap(QtGui.QPixmap(_fromUtf8("/Media/Images/HyenaLogo.gif")))
         self.Lb_EigenFace.setAlignment(QtCore.Qt.AlignCenter)
         self.Lb_EigenFace.setObjectName(_fromUtf8("Lb_EigenFace"))
         self.groupBox_6 = QtGui.QGroupBox(self.tab)
@@ -94,7 +94,7 @@ class Ui_ImageTraining(object):
         self.Lb_EigenFace_2 = QtGui.QLabel(self.groupBox_6)
         self.Lb_EigenFace_2.setGeometry(QtCore.QRect(10, 20, 291, 251))
         self.Lb_EigenFace_2.setText(_fromUtf8(""))
-        self.Lb_EigenFace_2.setPixmap(QtGui.QPixmap(_fromUtf8("Media/Images/HyenaLogo.gif")))
+        self.Lb_EigenFace_2.setPixmap(QtGui.QPixmap(_fromUtf8("/Media/Images/HyenaLogo.gif")))
         self.Lb_EigenFace_2.setAlignment(QtCore.Qt.AlignCenter)
         self.Lb_EigenFace_2.setObjectName(_fromUtf8("Lb_EigenFace_2"))
         self.groupBox_7 = QtGui.QGroupBox(self.tab)
@@ -103,7 +103,7 @@ class Ui_ImageTraining(object):
         self.Lb_EigenFace_3 = QtGui.QLabel(self.groupBox_7)
         self.Lb_EigenFace_3.setGeometry(QtCore.QRect(10, 20, 291, 251))
         self.Lb_EigenFace_3.setText(_fromUtf8(""))
-        self.Lb_EigenFace_3.setPixmap(QtGui.QPixmap(_fromUtf8("Media/Images/HyenaLogo.gif")))
+        self.Lb_EigenFace_3.setPixmap(QtGui.QPixmap(_fromUtf8("/Media/Images/HyenaLogo.gif")))
         self.Lb_EigenFace_3.setAlignment(QtCore.Qt.AlignCenter)
         self.Lb_EigenFace_3.setObjectName(_fromUtf8("Lb_EigenFace_3"))
         self.tabWidget.addTab(self.tab, _fromUtf8(""))
@@ -115,7 +115,7 @@ class Ui_ImageTraining(object):
         self.Lb_ConfusionMatrix = QtGui.QLabel(self.groupBox_4)
         self.Lb_ConfusionMatrix.setGeometry(QtCore.QRect(10, 20, 461, 551))
         self.Lb_ConfusionMatrix.setText(_fromUtf8(""))
-        self.Lb_ConfusionMatrix.setPixmap(QtGui.QPixmap(_fromUtf8("Media/Images/HyenaLogo.gif")))
+        self.Lb_ConfusionMatrix.setPixmap(QtGui.QPixmap(_fromUtf8("/Media/Images/HyenaLogo.gif")))
         self.Lb_ConfusionMatrix.setAlignment(QtCore.Qt.AlignCenter)
         self.Lb_ConfusionMatrix.setObjectName(_fromUtf8("Lb_ConfusionMatrix"))
         self.groupBox_5 = QtGui.QGroupBox(self.tab_2)

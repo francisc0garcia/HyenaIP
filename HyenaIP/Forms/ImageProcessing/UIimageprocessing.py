@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:/3DCV_projects/HyenaIP/HyenaIP/Forms/ImageProcessing/imageprocessing.ui'
 #
-# Created: Wed Feb 25 14:14:56 2015
+# Created: Tue Mar 10 09:50:02 2015
 #      by: PyQt4 UI code generator 4.9.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,7 +33,7 @@ class Ui_ImageProcessing(object):
         font.setFamily(_fromUtf8("Century Gothic"))
         ImageProcessing.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8("Media/Images/HyenaLogo.gif")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("/Media/Images/HyenaLogo.gif")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         ImageProcessing.setWindowIcon(icon)
         self.centralWidget = QtGui.QWidget(ImageProcessing)
         self.centralWidget.setObjectName(_fromUtf8("centralWidget"))
@@ -138,7 +138,7 @@ class Ui_ImageProcessing(object):
         self.Sl_Erosion = QtGui.QSlider(self.groupBox_6)
         self.Sl_Erosion.setGeometry(QtCore.QRect(140, 200, 160, 22))
         self.Sl_Erosion.setMinimum(1)
-        self.Sl_Erosion.setMaximum(30)
+        self.Sl_Erosion.setMaximum(10)
         self.Sl_Erosion.setOrientation(QtCore.Qt.Horizontal)
         self.Sl_Erosion.setTickPosition(QtGui.QSlider.TicksBothSides)
         self.Sl_Erosion.setTickInterval(5)
@@ -149,7 +149,7 @@ class Ui_ImageProcessing(object):
         self.Sl_Dilation = QtGui.QSlider(self.groupBox_6)
         self.Sl_Dilation.setGeometry(QtCore.QRect(140, 240, 160, 22))
         self.Sl_Dilation.setMinimum(1)
-        self.Sl_Dilation.setMaximum(50)
+        self.Sl_Dilation.setMaximum(20)
         self.Sl_Dilation.setOrientation(QtCore.Qt.Horizontal)
         self.Sl_Dilation.setTickPosition(QtGui.QSlider.TicksBothSides)
         self.Sl_Dilation.setTickInterval(5)
@@ -163,7 +163,8 @@ class Ui_ImageProcessing(object):
         self.Sl_MorphologicalGradient = QtGui.QSlider(self.groupBox_6)
         self.Sl_MorphologicalGradient.setGeometry(QtCore.QRect(140, 280, 160, 22))
         self.Sl_MorphologicalGradient.setMinimum(1)
-        self.Sl_MorphologicalGradient.setMaximum(50)
+        self.Sl_MorphologicalGradient.setMaximum(30)
+        self.Sl_MorphologicalGradient.setProperty("value", 5)
         self.Sl_MorphologicalGradient.setOrientation(QtCore.Qt.Horizontal)
         self.Sl_MorphologicalGradient.setTickPosition(QtGui.QSlider.TicksBothSides)
         self.Sl_MorphologicalGradient.setTickInterval(5)
@@ -263,7 +264,7 @@ class Ui_ImageProcessing(object):
         self.Lb_ImageFiltered = QtGui.QLabel(self.groupBox_3)
         self.Lb_ImageFiltered.setGeometry(QtCore.QRect(10, 20, 511, 421))
         self.Lb_ImageFiltered.setText(_fromUtf8(""))
-        self.Lb_ImageFiltered.setPixmap(QtGui.QPixmap(_fromUtf8("Media/Images/HyenaLogo.gif")))
+        self.Lb_ImageFiltered.setPixmap(QtGui.QPixmap(_fromUtf8("/Media/Images/HyenaLogo.gif")))
         self.Lb_ImageFiltered.setAlignment(QtCore.Qt.AlignCenter)
         self.Lb_ImageFiltered.setObjectName(_fromUtf8("Lb_ImageFiltered"))
         self.groupBox_2 = QtGui.QGroupBox(self.centralWidget)
@@ -272,7 +273,7 @@ class Ui_ImageProcessing(object):
         self.Lb_ImageOriginal = QtGui.QLabel(self.groupBox_2)
         self.Lb_ImageOriginal.setGeometry(QtCore.QRect(7, 28, 511, 411))
         self.Lb_ImageOriginal.setText(_fromUtf8(""))
-        self.Lb_ImageOriginal.setPixmap(QtGui.QPixmap(_fromUtf8("Media/Images/HyenaLogo.gif")))
+        self.Lb_ImageOriginal.setPixmap(QtGui.QPixmap(_fromUtf8("/Media/Images/HyenaLogo.gif")))
         self.Lb_ImageOriginal.setAlignment(QtCore.Qt.AlignCenter)
         self.Lb_ImageOriginal.setObjectName(_fromUtf8("Lb_ImageOriginal"))
         self.label_7 = QtGui.QLabel(self.centralWidget)

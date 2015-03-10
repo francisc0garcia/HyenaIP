@@ -5,6 +5,7 @@ from PyQt4 import QtGui, QtCore, Qt
 from Classes.GlobalSettings import *
 from Classes.VideoHandler import *
 from Classes.ErrorHandler import *
+from Classes.Utils import *
 
 HomeFrame = 0
 GlobalConfig = GlobalSettings()
@@ -30,6 +31,7 @@ def UIimageacquisition_LoadEvents(parent, Config):
         ImageAcquisitionFrame.video = False
 
         ImageAcquisitionFrame.actionClose_Module.triggered.connect(CloseWindow)
+        ImageAcquisitionFrame.actionLicence.triggered.connect(ShowLic)
         ImageAcquisitionFrame.BtnSelectImages.clicked.connect(SelectExistingFile)
         ImageAcquisitionFrame.BtnConnectDevice.clicked.connect(Turn_Camera)
         ImageAcquisitionFrame.BtnAddNewPackage.clicked.connect(CreateNewPackage)
@@ -39,13 +41,19 @@ def UIimageacquisition_LoadEvents(parent, Config):
     except:
         showErrorMessage("Error in UIimageacquisition_LoadEvents()", sys.exc_info() );
 
+def ShowLic():
+    '''
+    Show license information
+    '''
+    ShowLicense();
+
 def LoadInitialMethods():
     '''
     Load List of folders from GlobalConfig.PathDirectory
     '''
     try:
         Dir = GlobalConfig.PathDirectory
-        selectedItems= GetItemsSelected()
+        selectedItems= GetItemsSelected(ImageAcquisitionFrame.ListPackages)
         ImageAcquisitionFrame.ListPackages.clear()
 
         dirs = [d for d in os.listdir(str(Dir)) if os.path.isdir(os.path.join(str(Dir), d))]
@@ -57,38 +65,23 @@ def LoadInitialMethods():
             ImageAcquisitionFrame.ListPackages.addItem(QtGui.QListWidgetItem(NameItem))
 
         for i in selectedItems:
-            ImageAcquisitionFrame.ListPackages.item(i).setSelected(True)
+            if( i < ImageAcquisitionFrame.ListPackages.count() ):
+                ImageAcquisitionFrame.ListPackages.item(i).setSelected(True)
     except:
         showErrorMessage("Error in LoadInitialMethods() Verify the directory path selected! ", sys.exc_info() );
 
 def CloseWindow():
-    try:
-        sys.exit(0)
-    except:
-        showErrorMessage("Error in CloseWindow()", sys.exc_info() );
-        raise
-
-def GetItemsSelected():
-    selectedItems=[]
-
-    try:
-        items = ImageAcquisitionFrame.ListPackages.count()
-        rangedList =range(items)
-        rangedList.reverse()
-        for i in rangedList:
-            if ImageAcquisitionFrame.ListPackages.isItemSelected(ImageAcquisitionFrame.ListPackages.item(i))==True:
-                selectedItems.append(i)
-    except:
-        showErrorMessage("Error in GetItemsSelected()", sys.exc_info() );
-        
-    return selectedItems
+    sys.exit(0);
 
 def SelectExistingFile():
+    '''
+    Add Images to project from existing files
+    '''
     try:
         Dir = GlobalConfig.PathDirectory
 
         items = ImageAcquisitionFrame.ListPackages.count()
-        selectedItems= GetItemsSelected()
+        selectedItems= GetItemsSelected(ImageAcquisitionFrame.ListPackages)
 
         files = QtGui.QFileDialog.getOpenFileNames(
                 HomeFrame, 'Open File', '', 'Images (*.png *.bmp *.jpg)')
@@ -106,6 +99,9 @@ def SelectExistingFile():
         showErrorMessage("Error in SelectExistingFile()", sys.exc_info() );
 
 def Turn_Camera():
+    '''
+    Handle for camera actions
+    '''
     try:
         if(IsCameraRecorded):
             StopVideo()
@@ -115,6 +111,9 @@ def Turn_Camera():
         showErrorMessage("Error in Turn_Camera()", sys.exc_info() );
 
 def ConnectDevice():
+    '''
+    Use OpenCV for connect to camera device
+    '''
     try:
         if not (ImageAcquisitionFrame.video):
             ImageAcquisitionFrame.video = VideoHandler()
@@ -125,6 +124,9 @@ def ConnectDevice():
         showErrorMessage("Error in ConnectDevice()", sys.exc_info() );
 
 def play():
+    '''
+    Event for recover images from the Camera
+    '''
     try:
         ImageAcquisitionFrame.video.captureNextFrame()
         global CameraFrameActual
@@ -142,6 +144,7 @@ def StopVideo():
     try:
         ImageAcquisitionFrame._timer.stop()
         ImageAcquisitionFrame.video.StopVideo()
+
         global IsCameraRecorded
         IsCameraRecorded = False
         ImageAcquisitionFrame.BtnConnectDevice.setText("Turn ON camera");
@@ -149,6 +152,9 @@ def StopVideo():
         showErrorMessage("Error in ConnectDevice()", sys.exc_info() );
 
 def CreateNewPackage():
+    '''
+    Create a new Package (folder) inside the main directory (GlobalConfig.PathDirectory)
+    '''
     try:
         Dir = GlobalConfig.PathDirectory
         Name = ImageAcquisitionFrame.LineNameNewPackage.text()
@@ -161,9 +167,12 @@ def CreateNewPackage():
         showErrorMessage("Error in CreateNewPackage()", sys.exc_info() );
 
 def RemovePackageSelected():
+    '''
+    Delete a specific package (folder) and all its content
+    '''
     try:
         Dir = GlobalConfig.PathDirectory
-        selectedItems= GetItemsSelected()
+        selectedItems= GetItemsSelected(ImageAcquisitionFrame.ListPackages)
         for i in selectedItems:
             name = ImageAcquisitionFrame.ListPackages.item(i).text()
             NewDirectory = str(Dir) + str("\\") + name.split(" - (")[0]
@@ -174,12 +183,15 @@ def RemovePackageSelected():
         showErrorMessage("Error in RemovePackageSelected()", sys.exc_info() );
 
 def TakePhoto():
+    '''
+    Save the actual frame in the package selected in format JPG
+    '''
     try:
         Dir = GlobalConfig.PathDirectory
         Ext = ".jpg"
         Name = str(uuid.uuid4()).split('-')[0]
     
-        selectedItems= GetItemsSelected()
+        selectedItems= GetItemsSelected(ImageAcquisitionFrame.ListPackages)
 
         for i in selectedItems:
             SubDir = ImageAcquisitionFrame.ListPackages.item(i).text().split(" - (")[0]

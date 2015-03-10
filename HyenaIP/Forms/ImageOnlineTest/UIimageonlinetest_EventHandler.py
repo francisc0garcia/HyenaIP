@@ -3,13 +3,13 @@ import sys, os, cv2, numpy as np, shutil, uuid, pickle
 from matplotlib.image import imsave as imsave
 from matplotlib import image as image
 import matplotlib.pyplot as plt
-from matplotlib.backends import qt4_compat
+from matplotlib.backends import qt_compat
 from matplotlib.backends.backend_qt4agg import (
     FigureCanvasQTAgg as FigureCanvas,
     NavigationToolbar2QT as NavigationToolbar)
 from matplotlib.figure import Figure
 
-use_pyside = qt4_compat.QT_API == qt4_compat.QT_API_PYSIDE
+use_pyside = qt_compat.QT_API == qt_compat.QT_API_PYSIDE
 if use_pyside:
     from PySide.QtCore import *
     from PySide.QtGui import *
@@ -35,6 +35,9 @@ model = {}
 ClassesModel = {}
 
 def loadMatPlotLib():
+    '''
+    Load matplotlib objects into the widget
+    '''
     try:
         #detectedFace  Image
         ImageOnlineTest.fig_detectedFace = Figure((7.5, 7), dpi=50)
@@ -51,7 +54,19 @@ def loadMatPlotLib():
     except:
         showErrorMessage("Error in loadMatPlotLib()", sys.exc_info() );
 
+def ShowLic():
+    '''
+    Show license information
+    '''
+    ShowLicense();
+
+def CloseWindow():
+    sys.exit(0);
+
 def UIimageOnlineTest_LoadEvents(parent, Config):
+    '''
+    Load initial variables for the module
+    '''
     try:
         global HomeFrame
         HomeFrame = parent
@@ -64,9 +79,12 @@ def UIimageOnlineTest_LoadEvents(parent, Config):
         ImageOnlineTest.video = False
 
         ImageOnlineTest.Btn_Start.clicked.connect(Turn_Camera)
+        ImageOnlineTest.actionClose_Module.triggered.connect(CloseWindow)
+        ImageOnlineTest.actionLicense.triggered.connect(ShowLic)
     
         PathDir = str(GlobalConfig.PathDirectory)
 
+        # load model previously saved in training module (format .model)
         global model
         Files = [d for d in os.listdir(str(PathDir)) if not os.path.isdir(os.path.join(str(PathDir), d))]
         ModelDetected = False
@@ -102,6 +120,9 @@ def UIimageOnlineTest_LoadEvents(parent, Config):
         showErrorMessage("Error in UIimageOnlineTest_LoadEvents() Verify the directory path selected! ", sys.exc_info() );
 
 def Turn_Camera():
+    '''
+    Handle for camera actions
+    '''
     try:
         if(IsCameraRecorded):
             StopVideo()
@@ -111,6 +132,9 @@ def Turn_Camera():
         showErrorMessage("Error in Turn_Camera()", sys.exc_info() );
 
 def ConnectDevice():
+    '''
+    Use OpenCV for connect to camera device
+    '''
     try:
         if not (ImageOnlineTest.video):
             ImageOnlineTest.video = VideoHandler()
@@ -121,6 +145,9 @@ def ConnectDevice():
         showErrorMessage("Error in ConnectDevice()", sys.exc_info() );
 
 def play():
+    '''
+    Event for recover images from the Camera
+    '''
     try:
         ImageOnlineTest.video.captureNextFrame()
 
@@ -162,6 +189,9 @@ def StopVideo():
         showErrorMessage("Error in StopVideo()", sys.exc_info() );
 
 def PredictFace(img):
+    '''
+    Predict a face which was founded in the image img
+    '''
     img = cv2.cvtColor( img , cv2.COLOR_BGR2GRAY)
     global model
     img = cv2.resize(img, (200, 200))

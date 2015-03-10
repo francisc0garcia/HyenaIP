@@ -2,19 +2,16 @@ import sys, os, cv2, numpy as np, shutil, uuid, pickle
 
 from sklearn import cross_validation as cross_validation
 from sklearn.metrics import confusion_matrix
-#from sklearn.metrics import roc_curve, auc, precision_score
-#from sklearn.base import BaseEstimator
-
 from matplotlib.image import imsave as imsave
 from matplotlib import image as image
 import matplotlib.pyplot as plt
-from matplotlib.backends import qt4_compat
+from matplotlib.backends import qt_compat
 from matplotlib.backends.backend_qt4agg import (
     FigureCanvasQTAgg as FigureCanvas,
     NavigationToolbar2QT as NavigationToolbar)
 from matplotlib.figure import Figure
 
-use_pyside = qt4_compat.QT_API == qt4_compat.QT_API_PYSIDE
+use_pyside = qt_compat.QT_API == qt_compat.QT_API_PYSIDE
 if use_pyside:
     from PySide.QtCore import *
     from PySide.QtGui import *
@@ -35,8 +32,10 @@ ImageTrainingFrame = 0
 model = {}
 
 def LoadMatPlotLib_canvas():
+    '''
+    Load matplotlib objects into the widget
+    '''
     try:
-
         #MeanFace Image
         ImageTrainingFrame.fig_MeanFace = Figure((13.0, 5.0), dpi=50)
         ImageTrainingFrame.canvas_MeanFace = FigureCanvas(ImageTrainingFrame.fig_MeanFace)
@@ -103,8 +102,20 @@ def LoadMatPlotLib_canvas():
         ImageTrainingFrame.canvas_ConfusionMatrix.draw()
     except:
         showErrorMessage("Error in LoadMatPlotLib_canvas()", sys.exc_info() );
-    
+   
+def ShowLic():
+    '''
+    Show license information
+    '''
+    ShowLicense();
+
+def CloseWindow():
+    sys.exit(0);
+     
 def UIimageTraining_LoadEvents(parent, Config):
+    '''
+    Load initial variables for the module
+    '''
     try:
         global HomeFrame
         HomeFrame = parent
@@ -116,13 +127,30 @@ def UIimageTraining_LoadEvents(parent, Config):
         ImageTrainingFrame = HomeFrame.GUI_Ui_ImageTraining
 
         ImageTrainingFrame.Btn_Train.clicked.connect(TrainModel)
+        ImageTrainingFrame.actionClose_Module.triggered.connect(CloseWindow)
+        ImageTrainingFrame.actionLicense.triggered.connect(ShowLic)
+        ImageTrainingFrame.Hs_TrainTestSize.sliderReleased.connect(UpdateTrainTestSize)
+
+        UpdateTrainTestSize()
 
         LoadMatPlotLib_canvas()
         LoadSavedModel()
     except:
         showErrorMessage("Error in UIimageTraining_LoadEvents()", sys.exc_info() );
 
+def UpdateTrainTestSize():
+    '''
+    Update label - show % of train and test size
+    '''
+    InitialTrainingSize = ImageTrainingFrame.Hs_TrainTestSize.value();
+    InitialTestSize = 100 - InitialTrainingSize;
+    ImageTrainingFrame.label.setText("Train: " + str(InitialTrainingSize) + " % - Test: " + str(InitialTestSize) + " % ");
+
 def LoadSavedModel():
+    '''
+    Save the model calculated in the main directory if the project (GlobalConfig.PathDirectory)
+    for future process of online testing or reload.
+    '''
     try:
         PathDir = str(GlobalConfig.PathDirectory)
 
@@ -186,9 +214,10 @@ def LoadSavedModel():
     except:
         showErrorMessage("Error in LoadSavedModel() Verify the directory path selected! ", sys.exc_info() );
 
-
-
 def TrainModel():
+    '''
+    Train the selected model with the images which are placed inside of the folder of the project (GlobalConfig.PathDirectory)
+    '''
     try:
         Rb_FisherRec = ImageTrainingFrame.Rb_FisherRec.isChecked()
         Rb_LBPHRec = ImageTrainingFrame.Rb_LBPHRec.isChecked()
@@ -248,8 +277,6 @@ def TrainModel():
                 if( Y_pred_temp != Y_test[i]):
                     print "Diference--> Predict: " + str(Y_pred_temp) + " real: " + str(Y_test[i]) 
 
-        
-
             # Compute confusion matrix
             cm = confusion_matrix(Y_test, Y_pred)
 
@@ -301,6 +328,9 @@ def TrainModel():
         showErrorMessage("Error in TrainModel()", sys.exc_info() );
                 
 def SplitDataSet(X, Y, TrainSetSize):
+    '''
+    Split dataset into testing and training set
+    '''
     test_size = 1 - (float(TrainSetSize) / 100)
 
     #Split

@@ -1,4 +1,7 @@
 import os, sys, cv2, numpy as np, uuid
+from PyQt4.QtGui import *
+from PyQt4 import QtCore
+from PyQt4.QtCore import *
 
 def normalize(X, low, high, dtype=None):
     """Normalizes a given array in X to a value between low and high."""
@@ -103,3 +106,35 @@ def detect(img, cascade_fn='haarcascade_frontalface_alt2.xml',
     CutImage = croppedImage
 
     return OriginalImage, CutImage, IsDetected
+
+
+def ShowLicense():
+    msgBox = QMessageBox();
+
+    strLicense = 'Licensed under MIT license  http://en.wikipedia.org/wiki/MIT_License \n\n Francisco J. Garcia R 2015'
+    msgBox.setText("Hyena - image processing and training                           ");
+    msgBox.setInformativeText(strLicense);
+    msgBox.setStandardButtons(QMessageBox.Ok);
+    msgBox.setDefaultButton(QMessageBox.Ok);
+    msgBox.setIcon(QMessageBox.Information);
+    msgBox.setWindowTitle("Hyena");
+
+    ret = msgBox.exec_();
+
+def GetItemsSelected(ListPack):
+    '''
+    Return list of selected items in List
+    '''
+    selectedItems=[]
+
+    try:
+        items = ListPack.count()
+        rangedList =range(items)
+        rangedList.reverse()
+        for i in rangedList:
+            if ListPack.isItemSelected(ListPack.item(i))==True:
+                selectedItems.append(i)
+    except:
+        showErrorMessage("Error in GetItemsSelected()", sys.exc_info() );
+        
+    return selectedItems

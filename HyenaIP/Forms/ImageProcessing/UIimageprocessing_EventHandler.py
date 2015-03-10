@@ -2,13 +2,13 @@ import sys, os, cv2, numpy as np, shutil, uuid
 from matplotlib.image import imsave as imsave
 from matplotlib import image as image
 import matplotlib.pyplot as plt
-from matplotlib.backends import qt4_compat
+from matplotlib.backends import qt_compat
 from matplotlib.backends.backend_qt4agg import (
     FigureCanvasQTAgg as FigureCanvas,
     NavigationToolbar2QT as NavigationToolbar)
 from matplotlib.figure import Figure
 
-use_pyside = qt4_compat.QT_API == qt4_compat.QT_API_PYSIDE
+use_pyside = qt_compat.QT_API == qt_compat.QT_API_PYSIDE
 if use_pyside:
     from PySide.QtCore import *
     from PySide.QtGui import *
@@ -21,12 +21,16 @@ from PyQt4 import QtGui, QtCore, Qt
 from Classes.GlobalSettings import *
 from Classes.VideoHandler import *
 from Classes.ErrorHandler import *
+from Classes.Utils import *
 
 HomeFrame = 0
 GlobalConfig = GlobalSettings()
 ImageProcessingFrame = 0
 
 def LoadMatPlotLib_canvas():
+    '''
+    Load matplotlib objects into the widget
+    '''
     try:
         #Original Image
         ImageProcessingFrame.fig_Original = Figure((11.0, 9.0), dpi=50)
@@ -56,7 +60,6 @@ def LoadMatPlotLib_canvas():
     except:
         showErrorMessage("Error in LoadMatPlotLib_canvas()", sys.exc_info() );
 
-
 def UIimageProcessing_LoadEvents(parent, Config):
     '''
     Connect events to controls and define behaviour in UI elements
@@ -72,6 +75,7 @@ def UIimageProcessing_LoadEvents(parent, Config):
         ImageProcessingFrame = HomeFrame.GUI_Ui_ImageProcessing
 
         ImageProcessingFrame.actionClose_Module.triggered.connect(CloseWindow)
+        ImageProcessingFrame.actionLicense.triggered.connect(ShowLic)
         ImageProcessingFrame.BtnRunAndAddNewPackage.clicked.connect(ProcessNewPackage)
 
         ImageProcessingFrame.ListPackages.itemSelectionChanged.connect(UpdatePreview)
@@ -110,14 +114,22 @@ def UIimageProcessing_LoadEvents(parent, Config):
     except:
         showErrorMessage("Error in UIimageProcessing_LoadEvents()", sys.exc_info() );
 
+def ShowLic():
+    '''
+    Show license information
+    '''
+    ShowLicense();
+
 def UpdatePreview():
     GetPreviewImage()
 
-
 def LoadInitialMethods():
+    '''
+    Load intial variables for the module
+    '''
     try:
         Dir = GlobalConfig.PathDirectory
-        selectedItems= GetItemsSelected()
+        selectedItems= GetItemsSelected(ImageProcessingFrame.ListPackages)
         ImageProcessingFrame.ListPackages.clear()
 
         dirs = [d for d in os.listdir(str(Dir)) if os.path.isdir(os.path.join(str(Dir), d))]
@@ -134,35 +146,20 @@ def LoadInitialMethods():
         showErrorMessage("Error in LoadInitialMethods() Verify the directory path selected! ", sys.exc_info() );
 
 def CloseWindow():
-    try:
-        sys.exit(0)
-    except:
-        showErrorMessage("Error in CloseWindow()", sys.exc_info() );
-
-def GetItemsSelected():
-    
-    selectedItems=[]
-    try:
-        items = ImageProcessingFrame.ListPackages.count()
-        rangedList =range(items)
-        rangedList.reverse()
-        for i in rangedList:
-            if ImageProcessingFrame.ListPackages.isItemSelected(ImageProcessingFrame.ListPackages.item(i))==True:
-                selectedItems.append(i)
-    except:
-        showErrorMessage("Error in GetItemsSelected()", sys.exc_info() );
-    return selectedItems
+    sys.exit(0)
 
 def PreviewSelectedFilters():
     GetPreviewImage()
 
 def GetPreviewImage():
-    
+    '''
+    Refresh the preview image, based on the filters selected
+    '''
     img = 0
     Package = ""
 
     try:
-        ItemsSelected = GetItemsSelected()
+        ItemsSelected = GetItemsSelected(ImageProcessingFrame.ListPackages)
         for i in ItemsSelected:
             Package = str( ImageProcessingFrame.ListPackages.item(i).text() )            
     
@@ -205,6 +202,9 @@ def GetPreviewImage():
     return img
 
 def ColorShape_Resize(img):
+    '''
+    Resize images if the user specified a new size
+    '''
     try:
         if(ImageProcessingFrame.Cb_EnableColorShape.isChecked() ):
             Width = ImageProcessingFrame.Sb_Height.value()
@@ -219,6 +219,9 @@ def ColorShape_Resize(img):
     return img
 
 def ColorShape_ChangeColor(img):
+    '''
+    Apply color filters in the image
+    '''
     try:
         if(ImageProcessingFrame.Cb_EnableColorShape.isChecked() ):
 
@@ -263,6 +266,9 @@ def ColorShape_ChangeColor(img):
     return img
 
 def Thresholding_Images(img):
+    '''
+    Apply Thresholding filters over the images
+    '''
     try:
         if(ImageProcessingFrame.Cb_EnableThresholding.isChecked()):
             Hs_LevelThreshold = ImageProcessingFrame.Hs_LevelThreshold.value()
@@ -299,6 +305,9 @@ def Thresholding_Images(img):
     return img
 
 def CannyEdges_Images(img):
+    '''
+    Apply canny edge detector over the images
+    '''
     try:
         if(ImageProcessingFrame.Cb_EnableCannyEdges.isChecked()):
             Hs_CannyThreshold = ImageProcessingFrame.Hs_CannyThreshold.value()
@@ -310,11 +319,15 @@ def CannyEdges_Images(img):
     return img
 
 def ProcessNewPackage():
+    '''
+    Create a new package (folder) with the procesed images:
+    Apply filters over the original images and save the results into a new folder
+    '''
     try:
         img = 0
         Package = ""
 
-        ItemsSelected = GetItemsSelected()
+        ItemsSelected = GetItemsSelected(ImageProcessingFrame.ListPackages)
         for i in ItemsSelected:
             Package = str( ImageProcessingFrame.ListPackages.item(i).text() )            
     
