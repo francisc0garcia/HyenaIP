@@ -2,6 +2,8 @@ import os, sys, cv2, numpy as np, uuid
 from PyQt4.QtGui import *
 from PyQt4 import QtCore
 from PyQt4.QtCore import *
+from Classes.py2nif import *
+from Classes.ErrorHandler import *
 
 def normalize(X, low, high, dtype=None):
     """Normalizes a given array in X to a value between low and high."""
@@ -138,3 +140,80 @@ def GetItemsSelected(ListPack):
         showErrorMessage("Error in GetItemsSelected()", sys.exc_info() );
         
     return selectedItems
+
+def ExportProjectToQuickCog(mainPath):
+    FilesPath = []
+    FilesDescription = []
+    ClassName = []
+    ClassDescription = []
+    ClassNameUnique = []
+    indexClass = 0
+    NumberClasses = 0;
+    try:
+        for dirname, dirnames, filenames in os.walk(mainPath):
+            for subdirname in dirnames:
+                subject_path = os.path.join(dirname, subdirname)
+                indexClass = indexClass +1;
+                ClassNameUnique.append(subdirname)
+                for filename in os.listdir(subject_path):
+                    if os.path.splitext(filename)[1].lower() in ('.jpg', '.jpeg', '.png', '.bmp'):
+                        FilesPath.append(subject_path + "\\"+filename)
+                        FilesDescription.append(filename)
+                        ClassName.append(indexClass)
+                        ClassDescription.append(subdirname)
+                        
+        #Class file
+        NameFileNI = mainPath + "\\" + mainPath.split("\\")[len(mainPath.split("\\"))-1] + ".nif"
+        py2nif(np.array(ClassName).reshape((1,len(ClassName))), NameFileNI, ClassDescription)
+
+        # Dataset file - ews
+
+        #header
+        strContent = ('[Common]\nClasses=%s\nStdClass=1\nROIs=1\nItems=%s\nDoubleSelection=0\n')%(indexClass, len(ClassName) )
+
+        #[Class1]
+        #Name=Klasse1
+        #Description=
+        strClasses = ""
+        for c in ClassNameUnique:
+            strClasses = strClasses + "[" + c + "]\nName="+ c +"\nDescription="+ c +"\n"
+        #[ROI0]
+        strContent = strContent + strClasses + "[ROI0]\n"
+
+        strROI = "Name=(gesamtes Bild)\nDescription=(gesamtes Bild)\nX=-1\nY=-1\ndX=-1\ndY=-1\nZ=-1\n"
+
+        indexFile = 1
+        for f in ClassName:
+            strROI = strROI + str(indexFile) + "=" + str(f) + "\n"
+            indexFile = indexFile + 1;
+
+        strContent = strContent + strROI + "[Items]\n"
+
+        #[Items]
+        # 1=.\Picture\cointest_th10.bmp
+
+        strFiles = ""
+        indexFile = 1
+        for f in FilesPath:
+            strFiles = strFiles + str(indexFile) + "=" + f + "\n"
+            indexFile = indexFile + 1;
+
+        strContent = strContent + strFiles + "[ItemDescr]\n"
+
+        strFiles = ""
+        indexFile = 1
+        #1=cointest_th10.bmp
+        for f in FilesDescription:
+            strFiles = strFiles + str(indexFile) + "=" + f + "\n"
+            indexFile = indexFile + 1;
+
+        strContent = strContent + strFiles 
+
+        fileNameEWS = mainPath + "\\" + mainPath.split("\\")[len(mainPath.split("\\"))-1] + ".ews"
+        outfile = open(fileNameEWS,"w")
+        outfile.write(strContent)
+        outfile.close
+
+    except:
+        showErrorMessage("Error in LoadInitialMethods() Verify the directory path selected! ", sys.exc_info() );
+

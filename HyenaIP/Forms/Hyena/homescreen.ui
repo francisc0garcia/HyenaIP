@@ -215,6 +215,50 @@
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="tab_6">
+     <attribute name="title">
+      <string>5. Export</string>
+     </attribute>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>9</y>
+        <width>751</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>QuickCog</string>
+      </property>
+      <widget class="QLabel" name="label_9">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>441</width>
+         <height>61</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;This option allow you export the images files to QuickCog &lt;/p&gt;&lt;p&gt;Dataset content (format .ews)  and Class information (format .NIF)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="BtnExportToQuickCOG">
+       <property name="geometry">
+        <rect>
+         <x>512</x>
+         <y>60</y>
+         <width>231</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Export Dataset to QuickCog</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
    </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">

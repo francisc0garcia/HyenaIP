@@ -20,8 +20,6 @@ class Gui_UIhomescreen(QtGui.QMainWindow):
 
         Ui_HomeScreen_LoadEvents(self)
 
-
-
 def main():
     app = QtGui.QApplication(sys.argv)
     ex = Gui_UIhomescreen()

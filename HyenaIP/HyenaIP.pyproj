@@ -29,6 +29,7 @@
     <Compile Include="Classes\GlobalSettings.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\py2nif.py" />
     <Compile Include="Classes\Utils.py">
       <SubType>Code</SubType>
     </Compile>

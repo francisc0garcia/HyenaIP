@@ -107,6 +107,8 @@ def Ui_HomeScreen_LoadEvents(parent):
         HomeFrame.ui.BtnTestError.clicked.connect(on_BtnTestError_clicked)
         HomeFrame.ui.actionExit.triggered.connect(CloseWindow)
         HomeFrame.ui.actionLicense.triggered.connect(ShowLic)
+
+        HomeFrame.ui.BtnExportToQuickCOG.clicked.connect(Export_QuickCOG)
     except:
         showErrorMessage("Error in Ui_HomeScreen_LoadEvents", sys.exc_info() );
 
@@ -121,7 +123,7 @@ def CloseWindow():
     Close application
     '''
     sys.exit(0)
-            
+      
 def ShowFileDialog():
     '''
     Allows select the path for the main directory of the project.
@@ -138,3 +140,7 @@ def ShowFileDialog():
             GlobalConfig.PathDirectory = PathDirectory
     except:
         showErrorMessage("Error in Method ShowFileDialog()", sys.exc_info() );
+
+def Export_QuickCOG():
+    Dir = GlobalConfig.PathDirectory
+    ExportProjectToQuickCog(str(Dir))

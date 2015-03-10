@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -50,6 +51,10 @@ public:
     QWidget *tab_5;
     QPushButton *BtnTestError;
     QLabel *label_8;
+    QWidget *tab_6;
+    QGroupBox *groupBox;
+    QLabel *label_9;
+    QPushButton *BtnExportToQuickCOG;
     QLabel *label;
     QLabel *label_3;
     QLabel *label_5;
@@ -130,6 +135,18 @@ public:
         label_8->setObjectName(QStringLiteral("label_8"));
         label_8->setGeometry(QRect(10, 10, 760, 220));
         tabWidget->addTab(tab_5, QString());
+        tab_6 = new QWidget();
+        tab_6->setObjectName(QStringLiteral("tab_6"));
+        groupBox = new QGroupBox(tab_6);
+        groupBox->setObjectName(QStringLiteral("groupBox"));
+        groupBox->setGeometry(QRect(10, 9, 751, 121));
+        label_9 = new QLabel(groupBox);
+        label_9->setObjectName(QStringLiteral("label_9"));
+        label_9->setGeometry(QRect(10, 30, 441, 61));
+        BtnExportToQuickCOG = new QPushButton(groupBox);
+        BtnExportToQuickCOG->setObjectName(QStringLiteral("BtnExportToQuickCOG"));
+        BtnExportToQuickCOG->setGeometry(QRect(512, 60, 231, 41));
+        tabWidget->addTab(tab_6, QString());
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(80, 0, 441, 101));
@@ -190,6 +207,10 @@ public:
         BtnTestError->setText(QApplication::translate("HomeScreen", "Launch Online test module", 0));
         label_8->setText(QApplication::translate("HomeScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Online Test of Models</span></p><p><br/></p><p>This module allows you test in real time the models which was trained in the Training module,</p><p>it is necessary to train the packages before the Online test.</p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p></body></html>", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_5), QApplication::translate("HomeScreen", "4. Online Test of models ", 0));
+        groupBox->setTitle(QApplication::translate("HomeScreen", "QuickCog", 0));
+        label_9->setText(QApplication::translate("HomeScreen", "<html><head/><body><p>This option allow you export the images files to QuickCog </p><p>Dataset content (format .ews)  and Class information (format .NIF)</p></body></html>", 0));
+        BtnExportToQuickCOG->setText(QApplication::translate("HomeScreen", "Export Dataset to QuickCog", 0));
+        tabWidget->setTabText(tabWidget->indexOf(tab_6), QApplication::translate("HomeScreen", "5. Export", 0));
         label->setText(QApplication::translate("HomeScreen", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Hyena</span></p><p><span style=\" font-size:7pt; color:#535353;\">Acquisition, processing, training and testing process </span></p><p><span style=\" font-size:7pt; color:#535353;\">of images with python and OpenCV.</span></p></body></html>", 0));
         label_3->setText(QApplication::translate("HomeScreen", "<html><head/><body><p align=\"right\"><span style=\" font-size:7pt;\">Developed by</span></p><p align=\"right\"><span style=\" font-size:7pt; font-weight:600;\">Francisco J Garcia R</span></p><p align=\"right\"><span style=\" font-size:7pt; font-weight:600;\">2015</span></p></body></html>", 0));
         label_5->setText(QString());

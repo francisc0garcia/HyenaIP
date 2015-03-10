@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'C:/3DCV_projects/HyenaIP/HyenaIP/Forms/Hyena/homescreen.ui'
 #
-# Created: Thu Feb 26 10:22:08 2015
+# Created: Tue Mar 10 17:35:24 2015
 #      by: PyQt4 UI code generator 4.9.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -33,7 +33,7 @@ class Ui_HomeScreen(object):
         font.setFamily(_fromUtf8("Century Gothic"))
         HomeScreen.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8("Media/Images/HyenaLogo.gif")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("/Media/Images/HyenaLogo.gif")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         HomeScreen.setWindowIcon(icon)
         HomeScreen.setDockOptions(QtGui.QMainWindow.AllowTabbedDocks|QtGui.QMainWindow.AnimatedDocks)
         self.centralWidget = QtGui.QWidget(HomeScreen)
@@ -89,6 +89,18 @@ class Ui_HomeScreen(object):
         self.label_8.setGeometry(QtCore.QRect(10, 10, 760, 220))
         self.label_8.setObjectName(_fromUtf8("label_8"))
         self.tabWidget.addTab(self.tab_5, _fromUtf8(""))
+        self.tab_6 = QtGui.QWidget()
+        self.tab_6.setObjectName(_fromUtf8("tab_6"))
+        self.groupBox = QtGui.QGroupBox(self.tab_6)
+        self.groupBox.setGeometry(QtCore.QRect(10, 9, 751, 121))
+        self.groupBox.setObjectName(_fromUtf8("groupBox"))
+        self.label_9 = QtGui.QLabel(self.groupBox)
+        self.label_9.setGeometry(QtCore.QRect(10, 30, 441, 61))
+        self.label_9.setObjectName(_fromUtf8("label_9"))
+        self.BtnExportToQuickCOG = QtGui.QPushButton(self.groupBox)
+        self.BtnExportToQuickCOG.setGeometry(QtCore.QRect(512, 60, 231, 41))
+        self.BtnExportToQuickCOG.setObjectName(_fromUtf8("BtnExportToQuickCOG"))
+        self.tabWidget.addTab(self.tab_6, _fromUtf8(""))
         self.label = QtGui.QLabel(self.centralWidget)
         self.label.setGeometry(QtCore.QRect(80, 0, 441, 101))
         self.label.setObjectName(_fromUtf8("label"))
@@ -98,7 +110,7 @@ class Ui_HomeScreen(object):
         self.label_5 = QtGui.QLabel(self.centralWidget)
         self.label_5.setGeometry(QtCore.QRect(10, 10, 61, 91))
         self.label_5.setText(_fromUtf8(""))
-        self.label_5.setPixmap(QtGui.QPixmap(_fromUtf8("Media/Images/HyenaLogo.gif")))
+        self.label_5.setPixmap(QtGui.QPixmap(_fromUtf8("/Media/Images/HyenaLogo.gif")))
         self.label_5.setObjectName(_fromUtf8("label_5"))
         HomeScreen.setCentralWidget(self.centralWidget)
         self.menuBar = QtGui.QMenuBar(HomeScreen)
@@ -146,6 +158,10 @@ class Ui_HomeScreen(object):
         self.BtnTestError.setText(_translate("HomeScreen", "Launch Online test module", None))
         self.label_8.setText(_translate("HomeScreen", "<html><head/><body><p><span style=\" font-weight:600;\">Online Test of Models</span></p><p><br/></p><p>This module allows you test in real time the models which was trained in the Training module,</p><p>it is necessary to train the packages before the Online test.</p><p><br/></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p></body></html>", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), _translate("HomeScreen", "4. Online Test of models ", None))
+        self.groupBox.setTitle(_translate("HomeScreen", "QuickCog", None))
+        self.label_9.setText(_translate("HomeScreen", "<html><head/><body><p>This option allow you export the images files to QuickCog </p><p>Dataset content (format .ews)  and Class information (format .NIF)</p></body></html>", None))
+        self.BtnExportToQuickCOG.setText(_translate("HomeScreen", "Export Dataset to QuickCog", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_6), _translate("HomeScreen", "5. Export", None))
         self.label.setText(_translate("HomeScreen", "<html><head/><body><p><span style=\" font-size:10pt; font-weight:600;\">Hyena</span></p><p><span style=\" font-size:7pt; color:#535353;\">Acquisition, processing, training and testing process </span></p><p><span style=\" font-size:7pt; color:#535353;\">of images with python and OpenCV.</span></p></body></html>", None))
         self.label_3.setText(_translate("HomeScreen", "<html><head/><body><p align=\"right\"><span style=\" font-size:7pt;\">Developed by</span></p><p align=\"right\"><span style=\" font-size:7pt; font-weight:600;\">Francisco J Garcia R</span></p><p align=\"right\"><span style=\" font-size:7pt; font-weight:600;\">2015</span></p></body></html>", None))
         self.menuFile.setTitle(_translate("HomeScreen", "File", None))

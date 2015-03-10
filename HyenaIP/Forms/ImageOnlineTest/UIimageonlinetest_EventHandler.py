@@ -40,7 +40,7 @@ def loadMatPlotLib():
     '''
     try:
         #detectedFace  Image
-        ImageOnlineTest.fig_detectedFace = Figure((7.5, 7), dpi=50)
+        ImageOnlineTest.fig_detectedFace = Figure((7.5, 8), dpi=50)
         ImageOnlineTest.canvas_detectedFace = FigureCanvas(ImageOnlineTest.fig_detectedFace)
         ImageOnlineTest.canvas_detectedFace.setParent(ImageOnlineTest.Lb_detectedFace)
         ImageOnlineTest.canvas_detectedFace.setFocus()
@@ -164,10 +164,12 @@ def play():
             ImageOnlineTest.canvas_detectedFace.draw()
 
             [Y_pred, Y_conf] = PredictFace(CropImage)
-            ImageOnlineTest.Pt_Results.clear()
+            #ImageOnlineTest.Pt_Results.clear()
             ClassName = str(ClassesModel[Y_pred])
-            testDes = "Class: " + ClassName +  " Number: " +  str(Y_pred) + " Confidence level: " +  str(Y_conf)
-            ImageOnlineTest.Pt_Results.appendPlainText(testDes)
+            #testDes = "Class: " + ClassName +  " Number: " +  str(Y_pred) + " Confidence level: " +  str(Y_conf)
+            #ImageOnlineTest.Pt_Results.appendPlainText(testDes)
+            LabText = ClassName
+            ImageOnlineTest.LbPredictedFace.setText(ClassName);
 
         ImageOnlineTest.Lb_cameraInput.setPixmap(ImageOnlineTest.video.convertFrame())
         ImageOnlineTest.Lb_cameraInput.setScaledContents(True)
